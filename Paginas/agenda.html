@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mas Vida Nutrición - Agenda</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body id="gridLayout">
+    <header class="gridLogo">
+        <a href="../index.html">
+            <img src="../img/logo_MAS_VIDA_NUTRICION-removebg-preview.png" alt="Logo del sitio">
+        </a>
+    </header>
+
+    <nav class="gridMenu">
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="./sobremi.html">Sobre mí</a></li>
+            <li><a href="./servicio.html">Servicio</a></li>
+            <li><a href="./reserva.html">Reserva</a></li>
+            <li><a href="#">Agenda</a></li>
+        </ul>
+    </nav>
+
+    <main class="agendaContainer">
+        <h1>Agenda tu consulta</h1>
+
+        <div class="agenda-form">
+            <div class="input-group">
+                <label for="modalidad">Modalidad:</label>
+                <select id="modalidad" name="modalidad">
+                    <option value="presencial">Presencial</option>
+                    <option value="virtual">Virtual</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="fecha">Día:</label>
+                <input type="date" id="fecha" name="fecha">
+            </div>
+
+            <div class="input-group">
+                <label for="hora">Horario:</label>
+                <input type="time" id="hora" name="hora">
+            </div>
+
+            <button class="agenda-boton">Confirmar cita</button>
+        </div>
+    </main>
+
+    <footer class="gridFooter">
+        <a href="https://www.instagram.com/masvida.nutricion/?hl=es" target="_blank">SEGUIME</a>
+        <p>CONTACTO</p>
+        <ul>
+            <li>22351803401</li>
+            <li>masvida.nutricionmdp@gmail.com</li>
+        </ul>
+        <p>SUSCRIBITE</p>
+        <form action="Base">
+            <input type="email" name="" id="" placeholder="Ingrese su mail" />
+            <button type="submit">Enviar</button>
+        </form>
+    </footer>
+</body>
+
+</html>
