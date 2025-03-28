@@ -52,7 +52,7 @@ p {
     max-width: 150px;
 }
 
-/* ===== Menú ===== */
+/* ===== Menú Horizontal para Desktop ===== */
 .gridMenu {
     grid-area: menu;
     display: flex;
@@ -60,30 +60,22 @@ p {
     align-items: center;
 }
 
-
-@media (max-width: 991.98px) {
-    .gridMenu {
-        display: block; /* Mostrar menú horizontal en pantallas grandes */
-    }
-}
-
-@media (min-width: 992px) {
-    .navbar { 
-        display: none;  /* Ocultar offcanvas en pantallas grandes */
-    }
-}
-
 .gridMenu ul {
     list-style: none;
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap; /* El menú se ajusta automáticamente */
+    display: flex;  /* Mantener horizontal en desktop */
+    gap: 10px;  /* Separación entre elementos del menú */
+    padding: 0;
 }
 
 .gridMenu ul li {
-    padding: 5px 10px;
+    padding: 10px 15px;
     background-color: rgb(149, 219, 149);
-    border-radius: 3px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.gridMenu ul li:hover {
+    background-color: rgb(118, 191, 118); /* Cambio de color al pasar el mouse */
 }
 
 .gridMenu ul li a {
@@ -92,6 +84,16 @@ p {
     font-weight: bold;
 }
 
+@media (max-width: 768px) {
+    .gridMenu {
+        display: block; /* Menú vertical en móviles */
+    }
+
+    .gridMenu ul {
+        flex-direction: column;
+        gap: 5px;  /* Menor separación en vertical */
+    }
+}
 /* ===== Página "Inicio" ===== */
 .gridVideo {
     grid-area: content;
@@ -222,11 +224,14 @@ p {
     }
 }
 
-/* ===== Página "Agenda" ===== */
+/* ===== Estilo Personalizado para "Agenda" ===== */
 .agendaContainer {
     grid-area: content;
     text-align: center;
     padding: 20px;
+    background-color: rgb(221, 238, 232);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
 }
 
 .agenda-form {
@@ -235,6 +240,29 @@ p {
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #da3b85;
+}
+
+.agenda-form input, .agenda-form select, .agenda-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.agenda-form button {
+    padding: 10px 20px;
+    background-color: #da3b85;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.agenda-form button:hover {
+    background-color: #bf336d;
 }
 
 
