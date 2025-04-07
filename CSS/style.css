@@ -128,47 +128,41 @@ header {
     border-radius: 10px;
 }
 
+/* ===== Página "Sobre mí" ===== */
 .gridsobreMi {
+    grid-area: content;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Una columna en móviles */
     gap: 20px;
     align-items: center;
     padding: 20px;
-    max-width: 900px;
+    max-width: 1000px; /* Ancho limitado en pantallas pequeñas */
     margin: 0 auto;
-}
-
-.gridtextosobreMi {
-    text-align: left;
-    z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.gridimgsobreMi img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    object-fit: cover;
-    display: block;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 768px) {
     .gridsobreMi {
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 60% 40%; /* Dos columnas en pantallas grandes */
         grid-template-areas: "texto img";
     }
+}
 
-    .gridtextosobreMi {
-        grid-area: texto;
-    }
+.gridtextosobreMi {
+    grid-area: texto;
+    text-align: left;
+    padding: 10px;
+}
 
-    .gridimgsobreMi {
-        grid-area: img;
-    }
+.gridimgsobreMi {
+    grid-area: img;
+    
+}
+
+.gridimgsobreMi img {
+    width: 100%;  
+    max-width: 400px; /* Ancho limitado en pantallas grandes */
+    height: auto; /* Mantiene la proporción de la imagen */ 
+    border-radius: 20%;
 }
 
 /* ===== Página "Servicio" ===== */
