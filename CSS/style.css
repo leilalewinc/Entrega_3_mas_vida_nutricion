@@ -149,6 +149,7 @@ header {
 
 .gridtextosobreMi {
     grid-area: texto;
+    background-color: rgb(221, 238, 232);
     text-align: left;
     padding: 10px;
 }
@@ -286,6 +287,11 @@ header {
     background-color: #bf336d;
 }
 
+ @media (min-width: 768px) {
+    .agenda-form {
+        max-width: 600px; /* Dos columnas en pantallas grandes */
+    }
+ }
 
 /* Footer */
 .gridFooter {
