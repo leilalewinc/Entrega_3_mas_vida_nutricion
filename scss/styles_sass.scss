@@ -1,19 +1,4 @@
-/* ===== Estilo Global ===== */
-body {
-    font-family: "Mulish", serif;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(221, 238, 232);
-}
-
-h1 {
-    text-align: center;
-    color: #da3b85;
-}
-
-p {
-    line-height: 1.6;
-}
+@use "variables" as *; /* Importar variables de SCSS */
 
 /* ===== Grilla Principal Mobile-First ===== */
 #gridLayout {
@@ -38,75 +23,7 @@ p {
     }
 }
 
-header {
-    grid-area: header;
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* Dos columnas: logo más pequeño, menú más grande */
-    align-items: center; /* Alineación vertical */
-    justify-content: space-between; /* Espacio entre logo y menú */
-    padding: 10px 20px;
-}
-
-/* ===== Logo ===== */
-.gridLogo {
-    grid-area: header;
-    grid-column: 1; /* Ocupa la primera columna */
-    gap: 250px; /* Espacio entre logo y menú */
-    justify-self: start; /* Alinea el logo a la izquierda */
-}
-
-.gridLogo img {
-    max-width: 200px;
-}
-
-/* ===== Menú Horizontal para Desktop ===== */
-.gridMenu {
-    display: flex;
-    grid-column: 2; /* Ocupa la segunda columna */
-    margin-left: auto; /* Empuja el menú a la derecha */
-    justify-self: end; /* Alinea el menú a la derecha */
-}
-
-.gridMenu ul {
-    list-style: none;
-    display: flex;  /* Mantener horizontal en desktop */
-    gap: 1px;  /* Separación entre elementos del menú */
-    padding: 0px;
-}
-
-.gridMenu ul li {
-    padding: 5px 10px;
-    background-color: rgb(149, 219, 149);
-    border-radius: 15px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.gridMenu ul li:hover {
-    background-color: rgb(118, 191, 118); /* Cambio de color al pasar el mouse */
-}
-
-.gridMenu ul li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: 20lpx;
-    text-align:justify; /* Alineación del texto */
-}
-
-@media (max-width: 768px) {
-    .gridMenu {
-        display: block; /* Menú vertical en móviles */
-    }
-
-    .gridMenu ul {
-        flex-direction: column;
-        gap: 5px;  /* Menor separación en vertical */
-    }
-}
-
-#menuhamburguesa{
-    color: rgb(1, 12, 8);
-}
+@use "header" as *; /* Importar estilos de header */
 
 /* ===== Página "Inicio" ===== */
 .gridVideo {
@@ -280,51 +197,4 @@ header {
 }
 
 
-/* Footer */
-.gridFooter {
-    grid-area: footer;
-    background-color: rgb(149, 219, 149);
-    display: flex;
-    flex-direction: column; /* Columna en móviles */
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    
-}
-
-.gridFooter a {
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.gridFooter ul {
-    list-style: none;
-    padding: 0;
-}
-
-.gridFooter form {
-    display: flex;
-    gap: 5px;
-}
-
-footer input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-footer button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #da3b85;
-    color: white;
-    border-radius: 5px;
-}
-
-@media (min-width: 768px) {
-    .gridFooter {
-        flex-direction: row; /* Fila en pantallas grandes */
-        justify-content: space-between;
-    }
-}
+@use "footer" as *; /* Importar estilos de footer */

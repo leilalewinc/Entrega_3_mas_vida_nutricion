@@ -1,0 +1,69 @@
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Dos columnas: logo más pequeño, menú más grande */
+    align-items: center; /* Alineación vertical */
+    justify-content: space-between; /* Espacio entre logo y menú */
+    padding: 10px 20px;
+}
+
+/* ===== Logo ===== */
+.gridLogo {
+    grid-area: header;
+    grid-column: 1; /* Ocupa la primera columna */
+    gap: 250px; /* Espacio entre logo y menú */
+    justify-self: start; /* Alinea el logo a la izquierda */
+}
+
+.gridLogo img {
+    max-width: 200px;
+}
+
+/* ===== Menú Horizontal para Desktop ===== */
+.gridMenu {
+    display: flex;
+    grid-column: 2; /* Ocupa la segunda columna */
+    margin-left: auto; /* Empuja el menú a la derecha */
+    justify-self: end; /* Alinea el menú a la derecha */
+}
+
+.gridMenu ul {
+    list-style: none;
+    display: flex;  /* Mantener horizontal en desktop */
+    gap: 1px;  /* Separación entre elementos del menú */
+    padding: 0px;
+}
+
+.gridMenu ul li {
+    padding: 5px 10px;
+    background-color: rgb(149, 219, 149);
+    border-radius: 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.gridMenu ul li:hover {
+    background-color: rgb(118, 191, 118); /* Cambio de color al pasar el mouse */
+}
+
+.gridMenu ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20lpx;
+    text-align:justify; /* Alineación del texto */
+}
+
+@media (max-width: 768px) {
+    .gridMenu {
+        display: block; /* Menú vertical en móviles */
+    }
+
+    .gridMenu ul {
+        flex-direction: column;
+        gap: 5px;  /* Menor separación en vertical */
+    }
+}
+
+#menuhamburguesa{
+    color: rgb(1, 12, 8);
+}
