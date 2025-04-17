@@ -1,17 +1,355 @@
-/* Error: @use rules must be written before any other rules.
- *    ,
- * 26 | @use "header" as *; /* Importar estilos de header *∕
- *    | ^^^^^^^^^^^^^^^^^^
- *    '
- *   scss\styles_sass.scss 26:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: @use rules must be written before any other rules.\a    \2577 \a 26 \2502  @use "header" as *; /* Importar estilos de header */\d\a    \2502  ^^^^^^^^^^^^^^^^^^\a    \2575 \a   scss\\styles_sass.scss 26:1  root stylesheet';
+@charset "UTF-8";
+/*variables */
+/*mixin*/
+/* Estilos Globales */
+* {
+  box-sizing: border-box;
 }
+
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: 16px; /* Tamaño de fuente base */
+}
+
+body {
+  font-family: "Mulish", serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(221, 238, 232);
+}
+
+h1 {
+  text-align: center;
+  color: #da3b85;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Grilla Principal */
+#gridLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "content" "footer";
+  min-height: 100vh;
+  gap: 10px;
+}
+@media (min-width: 768px) {
+  #gridLayout {
+    grid-template-columns: 20% 60% 20%;
+    grid-template-areas: "header header header" "content content content" "footer footer footer";
+  }
+}
+
+/* Header */
+header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+header .gridLogo {
+  grid-column: 1;
+  gap: 250px;
+  justify-self: start;
+}
+header .gridLogo img {
+  max-width: 200px;
+}
+header .gridMenu {
+  display: flex;
+  grid-column: 2;
+  margin-left: auto;
+  justify-self: end;
+}
+header .gridMenu ul {
+  list-style: none;
+  display: flex;
+  gap: 1px;
+  padding: 0;
+}
+header .gridMenu ul li {
+  padding: 5px 10px;
+  background-color: rgb(149, 219, 149);
+  border-radius: 15px;
+  transition: background-color 0.3s ease-in-out;
+}
+header .gridMenu ul li:hover {
+  background-color: rgb(118, 191, 118);
+}
+header .gridMenu ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: justify;
+}
+@media (max-width: 768px) {
+  header .gridMenu {
+    display: block;
+  }
+  header .gridMenu ul {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+#menuhamburguesa {
+  color: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Página "Inicio" ===== */
+.gridVideo {
+  grid-area: content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridVideo video {
+  width: 100%; /* Escala en móviles */
+  max-width: 600px; /* Ancho limitado en pantallas grandes */
+  border-radius: 10px;
+}
+
+/* ===== Página "Sobre mí" ===== */
+.gridsobreMi {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna en móviles */
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  max-width: 1000px; /* Ancho limitado en pantallas pequeñas */
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .gridsobreMi {
+    grid-template-columns: 60% 40%; /* Dos columnas en pantallas grandes */
+    grid-template-areas: "texto img";
+  }
+}
+.gridtextosobreMi {
+  grid-area: texto;
+  background-color: rgb(221, 238, 232);
+  text-align: left;
+  padding: 10px;
+}
+
+.gridimgsobreMi {
+  grid-area: img;
+}
+
+.gridimgsobreMi img {
+  width: 100%;
+  max-width: 400px; /* Ancho limitado en pantallas grandes */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 20%;
+}
+
+/* ===== Página "Servicio" ===== */
+.gridServicio {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 1fr; /* Columna única en móviles */
+  gap: 20px;
+  max-width: 600px; /* Ancho limitado en pantallas pequeñas */
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .gridServicio {
+    grid-template-columns: 60% 40%; /* Dos columnas en pantallas grandes */
+    grid-template-areas: "texto mapa";
+    max-width: 1200px;
+  }
+}
+/* ===== Reservas: Mobile-First Layout ===== */
+.reservaContainer {
+  grid-area: content;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserva-boton {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #da3b85;
+  color: white;
+  border-radius: 8px;
+}
+
+.reserva-pasos {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  gap: 20px;
+  padding: 20px 10px;
+}
+
+.paso {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(221, 238, 232); /* Fondo suave */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.paso-numero {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: white;
+  background-color: #da3b85;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.paso p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .reserva-pasos {
+    grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
+  }
+}
+/* Reset básico para que los inputs no se desborden */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== Estilo Personalizado para "Agenda" ===== */
+/* Mobile First */
+.agendaContainer {
+  grid-area: content;
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(221, 238, 232);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.agenda-form {
+  display: grid;
+  gap: 15px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 2px solid #da3b85;
+}
+
+.agenda-form input,
+.agenda-form select,
+.agenda-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.agenda-form button {
+  padding: 12px 20px;
+  background-color: #da3b85;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.agenda-form button:hover {
+  background-color: #da3b85;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .agenda-form {
+    max-width: 600px;
+  }
+}
+/* Footer */
+.gridFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: footer;
+  background-color: rgb(149, 219, 149);
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.gridFooter a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.gridFooter ul {
+  list-style: none;
+  padding: 0;
+}
+
+.gridFooter form {
+  display: flex;
+  gap: 5px;
+}
+
+footer input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+footer button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #da3b85;
+  color: white;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .gridFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/*# sourceMappingURL=styles_sass.css.map */

@@ -1,30 +1,132 @@
-@use "variables" as *; /* Importar variables de SCSS */
+/*variables */ 
+$color-primario: #da3b85;
+$color-fondo: rgb(221, 238, 232);
+$color-secundario: rgb(149, 219, 149);
+$color-hover: rgb(118, 191, 118);
+$fuente-principal: "Mulish", serif;
+$sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-/* ===== Grilla Principal Mobile-First ===== */
-#gridLayout {
+/*mixin*/
+@mixin flex ($direction, $justify, $alignitems) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $alignitems;
+  }
+  
+  /* Estilos Globales */
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  html {
+    font-size: 16px; /* Tamaño de fuente base */
+  }
+
+body {
+    font-family: $fuente-principal;
+    margin: 0;
+    padding: 0;
+    background-color: $color-fondo;
+  }
+  
+  h1 {
+    text-align: center;
+    color: $color-primario;
+  }
+  
+  p {
+    line-height: 1.6;
+  }
+  
+  /* Grilla Principal */
+  #gridLayout {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    grid-template-columns: 1fr;
     grid-template-areas:
-        "header"
-        "content"
-        "footer";
+      "header"
+      "content"
+      "footer";
     min-height: 100vh;
     gap: 10px;
-}
-
-/* Media query: Diseño Desktop-First para pantallas grandes */
-@media (min-width: 768px) {
-    #gridLayout {
-        grid-template-columns: 20% 60% 20%;  /* Tres columnas en pantallas grandes */
-        grid-template-areas:
-            "header header header"
-            "content content content"
-            "footer footer footer";
+  
+    @media (min-width: 768px) {
+      grid-template-columns: 20% 60% 20%;
+      grid-template-areas:
+        "header header header"
+        "content content content"
+        "footer footer footer";
+    }
+  }
+  
+  /* Header */ 
+  header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  
+    .gridLogo {
+      grid-column: 1;
+      gap: 250px;
+      justify-self: start;
+  
+      img {
+        max-width: 200px;
+      }
+    }
+  
+    .gridMenu {
+      display: flex;
+      grid-column: 2;
+      margin-left: auto;
+      justify-self: end;
+  
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 1px;
+        padding: 0;
+  
+        li {
+          padding: 5px 10px;
+          background-color: $color-secundario;
+          border-radius: 15px;
+          transition: background-color 0.3s ease-in-out;
+  
+          &:hover {
+            background-color: $color-hover;
+          }
+  
+          a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: justify;
+          }
+        }
+      }
+  
+      @media (max-width: 768px) {
+        display: block;
+  
+        ul {
+          flex-direction: column;
+          gap: 5px;
+        }
+      }
     }
 }
-
-@use "header" as *; /* Importar estilos de header */
-
+ #menuhamburguesa{
+        color: $sombra;
+ }
 /* ===== Página "Inicio" ===== */
 .gridVideo {
     grid-area: content;
@@ -34,9 +136,7 @@
 }
 
 .videoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex (column, center, center);
 }
 
 .gridVideo video {
@@ -52,6 +152,9 @@
     grid-template-columns: 1fr; /* Una columna en móviles */
     gap: 20px;
     align-items: center;
+    padding: 20px;
+    max-width: 1000px; /* Ancho limitado en pantallas pequeñas */
+    margin: 0 auto;
 }
 
 @media (min-width: 768px) {
@@ -63,15 +166,20 @@
 
 .gridtextosobreMi {
     grid-area: texto;
+    background-color: $color-fondo;
     text-align: left;
+    padding: 10px;
 }
 
 .gridimgsobreMi {
     grid-area: img;
+    
 }
 
 .gridimgsobreMi img {
     width: 100%;  
+    max-width: 400px; /* Ancho limitado en pantallas grandes */
+    height: auto; /* Mantiene la proporción de la imagen */ 
     border-radius: 20%;
 }
 
@@ -109,7 +217,7 @@
     text-decoration: none;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #da3b85;
+    background-color: $color-primario;
     color: white;
     border-radius: 8px;
 }
@@ -122,24 +230,21 @@
 }
 
 .paso {
-    display: flex;
-    align-items: center;
-    background-color: rgb(221, 238, 232);  /* Fondo suave */
+    @include flex (row, center, center);
+    background-color: $color-fondo;  /* Fondo suave */
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
 }
 
 .paso-numero {
+    @include flex (row, center, center);
     font-size: 1.8rem;
     color: white;
-    background-color: #da3b85;
+    background-color: $color-primario;
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 15px;
 }
 
@@ -155,46 +260,109 @@
     }
 }
 
-/* ===== Estilo Personalizado para "Agenda" ===== */
-.agendaContainer {
+/* Reset básico para que los inputs no se desborden */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* ===== Estilo Personalizado para "Agenda" ===== */
+  
+  /* Mobile First */
+  .agendaContainer {
     grid-area: content;
     text-align: center;
     padding: 20px;
-    background-color: rgb(221, 238, 232);
+    background-color: $color-fondo;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
-}
-
-.agenda-form {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  .agenda-form {
     display: grid;
     gap: 15px;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 15px;
-    max-width: 600px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
-    border: 2px solid #da3b85;
-}
-
-.agenda-form input, .agenda-form select, .agenda-form textarea {
+    border: 2px solid $color-primario;
+  }
+  
+  .agenda-form input,
+  .agenda-form select,
+  .agenda-form textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
-}
-
-.agenda-form button {
-    padding: 10px 20px;
-    background-color: #da3b85;
+    font-size: 1rem;
+  }
+  
+  .agenda-form button {
+    padding: 12px 20px;
+    background-color: $color-primario;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .agenda-form button:hover {
+    background-color: $color-primario;
+  }
+  
+  /* Desktop */
+  @media (min-width: 768px) {
+    .agenda-form {
+      max-width: 600px;
+    }
+  }  
+
+/* Footer */
+.gridFooter {
+    @include flex (column, center, center);
+    grid-area: footer;
+    background-color: $color-secundario;
+    gap: 10px;
+    padding: 10px 20px;
+    
 }
 
-.agenda-form button:hover {
-    background-color: #bf336d;
+.gridFooter a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
 }
 
+.gridFooter ul {
+    list-style: none;
+    padding: 0;
+}
 
-@use "footer" as *; /* Importar estilos de footer */
+.gridFooter form {
+    display: flex;
+    gap: 5px;
+}
+
+footer input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+footer button {
+    padding: 5px 10px;
+    border: none;
+    background-color: $color-primario;
+    color: white;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .gridFooter {
+        @include flex (row, space-between, center);
+    }
+}

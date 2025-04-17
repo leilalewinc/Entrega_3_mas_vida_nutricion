@@ -246,52 +246,66 @@ header {
     }
 }
 
-/* ===== Estilo Personalizado para "Agenda" ===== */
-.agendaContainer {
+/* Reset básico para que los inputs no se desborden */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* ===== Estilo Personalizado para "Agenda" ===== */
+  
+  /* Mobile First */
+  .agendaContainer {
     grid-area: content;
     text-align: center;
     padding: 20px;
     background-color: rgb(221, 238, 232);
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
-}
-
-.agenda-form {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  .agenda-form {
     display: grid;
     gap: 15px;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 15px;
-    max-width: 600px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     border: 2px solid #da3b85;
-}
-
-.agenda-form input, .agenda-form select, .agenda-form textarea {
+  }
+  
+  .agenda-form input,
+  .agenda-form select,
+  .agenda-form textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
-}
-
-.agenda-form button {
-    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  
+  .agenda-form button {
+    padding: 12px 20px;
     background-color: #da3b85;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-}
-
-.agenda-form button:hover {
+    font-size: 1rem;
+  }
+  
+  .agenda-form button:hover {
     background-color: #bf336d;
-}
-
- @media (min-width: 768px) {
+  }
+  
+  /* Desktop */
+  @media (min-width: 768px) {
     .agenda-form {
-        max-width: 600px; /* Dos columnas en pantallas grandes */
+      max-width: 600px;
     }
- }
+  }  
 
 /* Footer */
 .gridFooter {
