@@ -1,4 +1,4 @@
-/*variables */ 
+// _variables.scss
 $color-primario: #da3b85;
 $color-fondo: rgb(221, 238, 232);
 $color-secundario: rgb(149, 219, 149);
@@ -14,6 +14,11 @@ $sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
     align-items: $alignitems;
   }
   
+/* extend */
+.navbar-toggler {
+    @extend .navbar-toggler-icon !optional;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgb(221, 238, 232)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
   /* Estilos Globales */
   * {
     box-sizing: border-box;
